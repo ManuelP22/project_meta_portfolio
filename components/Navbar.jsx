@@ -1,15 +1,18 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion, useCycle } from 'framer-motion';
+import { useRef } from 'react';
 
-import { RiCloseLine } from 'react-icons/ri';
-import { HiOutlineMenu } from 'react-icons/hi';
+import { useDimensions } from '../constants';
 import styles from '../styles';
-import { navVariants } from '../utils/motion';
+import { navVariants, sidebarVariants } from '../utils/motion';
+import { Navigation } from './Navigation';
+import { MenuToggle } from './MenuToggle';
 
 const Navbar = () => {
-  const [menu, setMenu] = useState(false);
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
+  const { height } = useDimensions(containerRef);
 
   return (
     <motion.nav
@@ -17,22 +20,26 @@ const Navbar = () => {
       initial="hidden"
       whileInView="show"
       className={`${styles.xPaddings} py-8 relative`}
+      ref={containerRef}
+      custom={height}
+      animate={isOpen ? 'open' : 'closed'}
     >
       <div className="absolute w-[50%] inset-0 gradient-01" />
-      <div
-        className={`${styles.innerWidth} mx-auto flex justify-between gap-8`}
-      >
+      <div className={`${styles.innerWidth} mx-auto flex justify-between gap-8 xl:ml-[22rem] sm:ml-[9rem]`}>
         <img
           src="/search.svg"
           alt="search"
-          className="w-[24px] h-[24px] object-contain"
+          className="w-[24px] h-[24px] object-contain -mr-[90px]"
         />
-        <h2 className="font-extrabold text-[24px] leading-[30.24px] text-white">
+        <h2 className="font-extrabold text-[24px] leading-[30.24px] text-white -mr-[180px]">
           MANUEL / PEREZ
         </h2>
-        {menu ? (
-          <RiCloseLine className="w-[24px] h-[24px] object-contain sm:-mr-5 text-white" onClick={() => setMenu(false)} />
-        ) : <HiOutlineMenu className="w-[24px] h-[24px] object-contain sm:-mr-5 text-white" onClick={() => setMenu(true)} />}
+
+        <div className="flex justify-end sm:-mt-[70px] -mt-[50px] -pr-[80px] relative z-10">
+          <motion.div className="w-[300px] bg-white z-0 -mr-60 mt-[47px]" variants={sidebarVariants} />
+          <MenuToggle toggle={() => toggleOpen()} />
+          <Navigation />
+        </div>
       </div>
     </motion.nav>
 

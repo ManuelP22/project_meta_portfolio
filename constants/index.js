@@ -1,3 +1,8 @@
+import { useEffect, useRef } from 'react';
+import { GrContactInfo } from 'react-icons/gr';
+import { BsPersonSquare, BsChatDots } from 'react-icons/bs';
+import { FaDesktop, FaLaptopCode } from 'react-icons/fa';
+
 export const exploreWorlds = [
   {
     id: 'world-1',
@@ -85,4 +90,23 @@ export const socials = [
     name: 'facebook',
     url: '/facebook.svg',
   },
+];
+
+export const useDimensions = (ref) => {
+  const dimensions = useRef({ width: 0, height: 0 });
+
+  useEffect(() => {
+    dimensions.current.width = ref.current.offsetWidht;
+    dimensions.current.height = ref.current.offsetHeight;
+  }, [null]);
+
+  return dimensions.current;
+};
+
+export const sections = [
+  { title: 'Sobre mi', to: '/about', icon: BsPersonSquare },
+  { title: 'Trabajo', to: '/work', icon: FaDesktop },
+  { title: 'Habilidades', to: '/skills', icon: FaLaptopCode },
+  { title: 'Testimonios', to: '/testimonials', icon: BsChatDots },
+  { title: 'Contacto', to: '/contact', icon: GrContactInfo },
 ];
