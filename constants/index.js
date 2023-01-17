@@ -110,3 +110,9 @@ export const sections = [
   { title: 'Testimonios', to: '/testimonials', icon: BsChatDots },
   { title: 'Contacto', to: '/contact', icon: GrContactInfo },
 ];
+
+export const covers = [
+  'cover.png',
+  'cover2.png',
+  'cover3.png',
+];
