@@ -229,3 +229,22 @@ export const coversVariants = {
   }),
 };
 
+export const coversButtonVariants = {
+  whileHover: {
+    scale: 1.1,
+    trsition: {
+      type: 'spring', stiffness: 400, damping: 10,
+    },
+  },
+
+  whileTapLeft: {
+    x: -15,
+    scale: 1.1,
+  },
+
+  whileTapRight: {
+    x: 15,
+    scale: 1.1,
+  },
+};
+

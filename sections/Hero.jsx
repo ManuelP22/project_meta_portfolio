@@ -4,9 +4,8 @@ import { motion } from 'framer-motion';
 
 import { useState } from 'react';
 import styles from '../styles';
-import { slideIn, staggerContainer, textVariant } from '../utils/motion';
+import { slideIn, staggerContainer, textVariant, coversVariants, coversButtonVariants } from '../utils/motion';
 import { covers } from '../constants';
-import { coversVariants } from '../utils/motion';
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
@@ -70,19 +69,27 @@ const Hero = () => {
             alt="hero_slides"
             className="w-full sm:h-[500px] h-[350px] object-cover rounded-tl-[140px] z-10 relative"
           />
-          <button
+          <motion.button
+            variants={coversButtonVariants}
+            whileHover="whileHover"
+            whileTap="whileTapLeft"
+            type="button"
             className="absolute top-[40%] left-[20px] transform translate-y z-20 p-[16px] w-[64px] text-2xl aspect-[1/1] border-r-[34px] border-none rounded-full cursor-pointer text-center bg-[#0f0c29] text-white"
-            onClick={prevStep}
-          >
-            ◄
-          </button>
-
-          <button
-            className="absolute top-[39.5%] right-[20px] transform translate-x z-20 p-[16px] w-[64px] text-2xl aspect-[1/1] border-r-[34px] border-none rounded-full cursor-pointer text-center bg-[#0f0c29] text-white"
             onClick={nextStep}
           >
+            ◄
+          </motion.button>
+
+          <motion.button
+            variants={coversButtonVariants}
+            whileHover="whileHover"
+            whileTap="whileTapRight"
+            type="button"
+            className="absolute top-[39.5%] right-[20px] transform translate-x z-20 p-[16px] w-[64px] text-2xl aspect-[1/1] border-r-[34px] border-none rounded-full cursor-pointer text-center bg-[#0f0c29] text-white"
+            onClick={prevStep}
+          >
             ►
-          </button>
+          </motion.button>
 
           <a href="#explore">
             <div className="w-full flex justify-end sm:-mt-[70px] -mt-[50px] pr-[40px] relative z-10">

@@ -25,17 +25,17 @@ const Navbar = () => {
       animate={isOpen ? 'open' : 'closed'}
     >
       <div className="absolute w-[50%] inset-0 gradient-01" />
-      <div className={`${styles.innerWidth} mx-auto flex justify-between gap-8 xl:ml-[22rem] sm:ml-[9rem]`}>
+      <div className={`${styles.innerWidth} mx-auto flex justify-between gap-8 sm:ml-[9rem] md:ml-[8rem] lg:ml-[7.5rem] min-[1440px]:ml-[9rem] xl:ml-[22rem] 2xl:ml-[25rem]`}>
         <img
           src="/search.svg"
           alt="search"
           className="w-[24px] h-[24px] object-contain -mr-[90px]"
         />
-        <h2 className="font-extrabold text-[24px] leading-[30.24px] text-white -mr-[180px]">
+        <h2 className="font-extrabold md:text-[24px] min-[320px]:text-[20px] 2xl:text-[32px] min-[320px]:ml-[11rem] min-[320px]:-mt-[0.5rem] leading-[30.24px] text-white -mr-[180px]">
           MANUEL / PEREZ
         </h2>
 
-        <div className="flex justify-end sm:-mt-[70px] -mt-[50px] -pr-[80px] relative z-10">
+        <div className="flex justify-end sm:-mt-[70px] min-[320px]:ml-[13.5rem] min-[320px]:-mt-[4.2rem] -mt-[50px] -pr-[80px] relative z-10">
           <motion.div className="w-[300px] bg-white z-0 -mr-60 mt-[47px]" variants={sidebarVariants} />
           <MenuToggle toggle={() => toggleOpen()} />
           <Navigation />
